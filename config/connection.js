@@ -13,7 +13,8 @@ if (process.env.JAWSDB_URL) {
         {
             host: 'localhost',
             dialect: 'mysql',
-            port: 3001
+            // I use 3001 and got error, then I realize JAWSDB has to use 3306
+            port: 3306
         }
     );
 }
