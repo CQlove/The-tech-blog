@@ -1,13 +1,14 @@
 async function signup(event) {
     event.prevenDefault();
+    console.log('test')
 
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
 
     if (username && password) {
         const response = await fetch('/api/users', {
-            method: 'Post',
-            body: JSON.stringify({ name: username, password }),
+            method: 'POST',
+            body: JSON.stringify({ name: username.value, password: password.value }),
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
@@ -20,4 +21,4 @@ async function signup(event) {
     }
 }
 
-document.getElementById('signup').addEventListener('submit', signup)
+document.getElementById('signup-form').addEventListener('submit', signup)

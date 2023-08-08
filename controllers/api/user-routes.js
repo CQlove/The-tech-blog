@@ -13,42 +13,42 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
-    try {
-        const userData = await User.findOne({
-            attributes: { exclude: ['password'] },
-            where: { id: req.params.id },
-            include: [
-                {
-                    model: Post,
-                    attributes: ['id', 'title', 'text', 'created_at'],
-                },
-                {
-                    model: Comment,
-                    attributes: ['id', 'body', 'created_at'],
-                    include: {
-                        model: Post,
-                        attributes: ['title'],
-                    },
-                },
-                {
-                    model: Post,
-                    attributes: ['title'],
-                },
-            ],
-        });
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const userData = await User.findOne({
+//             attributes: { exclude: ['password'] },
+//             where: { id: req.params.id },
+//             include: [
+//                 {
+//                     model: Post,
+//                     attributes: ['id', 'title', 'text', 'created_at'],
+//                 },
+//                 {
+//                     model: Comment,
+//                     attributes: ['id', 'body', 'created_at'],
+//                     include: {
+//                         model: Post,
+//                         attributes: ['title'],
+//                     },
+//                 },
+//                 {
+//                     model: Post,
+//                     attributes: ['title'],
+//                 },
+//             ],
+//         });
 
-        if (!userData) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
-        }
+//         if (!userData) {
+//             res.status(404).json({ message: 'No user found with this id' });
+//             return;
+//         }
 
-        res.json(userData);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
+//         res.json(userData);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
 
 // user sign up
 router.post('/', async (req, res) => {

@@ -2,6 +2,8 @@ const router = require('express').Router();
 const sequelize = require('sequelize');
 const { Post, User, Comment } = require('../models');
 
+
+// this is the main page and u will see all the post no matter you logged in or not
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -33,18 +35,23 @@ router.get('/', async (req, res) => {
     }
 });
 
+// go to log in page
 router.get('/login', (req, res) => {
+    // if logged in
     if (req.session.loggedIn) {
+        // redirect to main(or root), which is homepage
         res.redirect('/');
         return;
     }
     res.render('login');
 });
 
+// go to sign up and render signup.handlebars
 router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
+// get post by post id
 router.get('/post/:id', async (req, res) => {
     try {
         const postData = await Post.findOne({
