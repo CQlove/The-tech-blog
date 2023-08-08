@@ -80,39 +80,4 @@ router.get('/post/:id', async (req, res) => {
     }
 });
 
-
-router.get('/postswithcomments', async (req, res) => {
-    try {
-        const postData = await Post.findOne({
-            where: { id: req.params.id },
-            attributes: ['id', 'text', 'title', 'created_at'],
-            include: [
-                {
-                    model: Comment,
-                    attributes: ['id', 'body', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['name'],
-                    },
-                },
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-            ],
-        });
-
-        if (!postData) {
-            res.status(404).json({ message: 'Can not find post!' });
-            return;
-        }
-
-        const post = postData.get({ plain: true });
-        res.render('postswithcomments', { post, loggedIn: req.session.loggedIn });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
 module.exports = router;

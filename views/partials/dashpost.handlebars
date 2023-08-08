@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h3 class="card-title">
+                    {{!-- we use the same way of post details, only difference is the url goes to edit--}}
+                    {{!-- clicck the title of the post goes to edit --}}
+                    <a href="/dashboard/edit/{{id}}">{{title}}</a>
+                </h3>
+                <p class="card-body">{{text}}</p>
+                <p class="card-text">
+                    <span class="highlight">{{user.name}}</span> created on {{format_date created_at}} !
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

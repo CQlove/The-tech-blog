@@ -1,13 +1,13 @@
 async function signup(event) {
     event.prevenDefault();
 
-    const username = document.querySelector('#username').value.trim();
-    const password = document.querySelector('#password').value.trim();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
 
     if (username && password) {
         const response = await fetch('/api/users', {
             method: 'Post',
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ name: username, password }),
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {

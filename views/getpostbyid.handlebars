@@ -1,0 +1,21 @@
+<div>
+    {{>post-details post}}
+    {{!-- if logged in, you can add comment --}}
+    {{if loggedIn}}
+
+    <div>
+        <p>Comment:<input placeholder="add comment here" id="input"></p>
+        <button type="submit" id="submit-comment">Submit</button>
+    </div>
+
+    {{/if}}
+
+    {{comment post.comment}}
+</div>
+
+
+
+{{!-- if logged in we use comment.js to deal with the logic --}}
+{{if loggedIn}}
+<script src="/js/comment.js"></script>
+{{/if}}
