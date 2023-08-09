@@ -1,8 +1,8 @@
 async function login(event) {
     event.preventDefault();
 
-    const name = document.querySelector('#username').value.trim();
-    const password = document.querySelector('#password').value.trim();
+    const name = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
 
     console.log(name, password)
     if (name && password) {
