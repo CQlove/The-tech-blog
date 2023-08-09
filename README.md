@@ -10,7 +10,7 @@ Need to build a CMS-style blog site similar to a Wordpress site, where developer
 - [Installation](#installation)
 - [Usage](#usage)
 - [Repo-Link](#repo-link)
-- [Viedo-Guide](#viedo-guide)
+- [Screenshot](#screenshot)
 
 ## User Story
 
@@ -99,4 +99,6 @@ To use the application, you need to follow the installation part to open the app
 
 [Link to the code repository](https://github.com/CQlove/The-tech-blog)
 
-## Viedo-Guide
+## Screenshot
+
+![Screenshot](./public/screenshot/tech-blog.png)
