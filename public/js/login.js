@@ -13,8 +13,10 @@ async function login(event) {
         });
         if (response.ok) {
             document.location.replace('/dashboard');
+            console.log("success");
         } else {
             alert('Login failed');
+            console.log("failed")
         }
     }
 }
@@ -24,5 +26,6 @@ function signup(event) {
     event.preventDefault();
     document.location.replace('/signup');
 }
-document.getElementById('login-form').addEventListener('submit', login);
+
+document.getElementById('login').addEventListener('click', login);
 document.getElementById('signup').addEventListener('click', signup);    

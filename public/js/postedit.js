@@ -3,7 +3,8 @@ async function editpost(event) {
 
     const title = document.getElementById('title').value.trim();
     const text = document.getElementById('text').value.trim();
-    const id = window.location.toString().split('/').length - 1;
+    const id = window.location.toString().split('/').pop();
+    console.log(id);
 
     const response = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
@@ -21,4 +22,4 @@ async function editpost(event) {
 
 }
 
-document.getElementById('update-button').addEventListener('submit', editpost);
+document.getElementById('update-button').addEventListener('click', editpost);

@@ -9,7 +9,7 @@ async function comment(event) {
     if (comment) {
         const response = await fetch('/api/comments', {
             method: 'POST',
-            body: JSON.stringify({ post_id, body }),
+            body: JSON.stringify({ post_id, body: comment }),
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
@@ -20,4 +20,4 @@ async function comment(event) {
     }
 }
 
-document.getElementById('submit-comment').addEventListener('submit', comment);
+document.getElementById('submit-comment').addEventListener('click', comment);

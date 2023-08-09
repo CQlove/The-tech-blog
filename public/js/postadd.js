@@ -19,4 +19,4 @@ async function addNew(event) {
     }
 };
 
-document.getElementById('create-new').addEventListener('submit', addNew);
+document.getElementById('create-new').addEventListener('click', addNew);
