@@ -1,6 +1,6 @@
 <div>
     {{!-- if logged in, you can add comment --}}
-    {{#if loggedIn}}
+    {{#if logged_in}}
     {{>post-details post}}
     {{>comment post.comment}}
     <div>
@@ -8,16 +8,15 @@
         <button type="submit" id="submit-comment">Submit</button>
     </div>
     {{else}}
-    {{!-- if not logged in, go to login page --}}
-    <script>
-        window.location.href = "/login"; 
-    </script>
+    {{!-- if not logged in, and click the title of the post will go to login page --}}
+    {{>post-requirelogin post}}
+
     {{/if}}
 </div>
 
 
 
 {{!-- if logged in we use comment.js to deal with the logic --}}
-{{#if loggedIn}}
+{{#if logged_in}}
 <script src="/js/comment.js"></script>
 {{/if}}

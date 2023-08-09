@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
         const posts = postData.map((post) => post.get({ plain: true }));
         res.render('homepage', {
             posts,
-            loggedIn: req.session.loggedIn
+            logged_in: req.session.logged_in
         });
     } catch (err) {
         console.log(err);
@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
 // go to log in page
 router.get('/login', (req, res) => {
     // if logged in
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
         // redirect to main(or root), which is homepage
         res.redirect('/');
         return;
@@ -80,7 +80,7 @@ router.get('/post/:id', async (req, res) => {
 
         const post = postData.get({ plain: true });
         console.log(post);
-        res.render('getpostbyid', { post, loggedIn: req.session.loggedIn });
+        res.render('getpostbyid', { post, logged_in: req.session.logged_in });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);

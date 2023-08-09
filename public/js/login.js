@@ -1,22 +1,23 @@
 async function login(event) {
     event.preventDefault();
-    console.log('hello')
-    const name = document.getElementById('username');
-    const password = document.getElementById('password');
 
-    // if (name && password) {
-    const response = await fetch('/api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ name: name.value, password: password.value }),
-        headers: { 'Content-Type': 'application/json' }
-    });
-    if (response.ok) {
-        document.location.replace('/dashboard');
-    } else {
-        alert('Login failed');
+    const name = document.querySelector('#username').value.trim();
+    const password = document.querySelector('#password').value.trim();
+
+    console.log(name, password)
+    if (name && password) {
+        const response = await fetch('/api/users/login', {
+            method: 'POST',
+            body: JSON.stringify({ name, password }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert('Login failed');
+        }
     }
 }
-// }
 
 
 function signup(event) {

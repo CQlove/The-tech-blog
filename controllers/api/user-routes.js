@@ -1,17 +1,17 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../../models');
 
-router.get('/', async (req, res) => {
-    try {
-        const userData = await User.findAll({
-            attributes: { exclude: ['password'] },
-        });
-        res.json(userData);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
+// router.get('/', async (req, res) => {
+//     try {
+//         const userData = await User.findAll({
+//             attributes: { exclude: ['password'] },
+//         });
+//         res.json(userData);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
 
 // router.get('/:id', async (req, res) => {
 //     try {
@@ -56,12 +56,13 @@ router.post('/', async (req, res) => {
         const userData = await User.create({
             name: req.body.name,
             password: req.body.password,
+            email: req.body.email,
         });
 
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.name = userData.name;
-            req.session.loggedIn = true;
+            req.session.logged_in = true;
 
             res.json(userData);
         });
@@ -92,7 +93,7 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.name = userData.name;
-            req.session.loggedIn = true;
+            req.session.logged_in = true;
 
             res.json({ user: userData, message: 'You are logged in!' });
         });
@@ -103,7 +104,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
         });
@@ -112,41 +113,41 @@ router.post('/logout', (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
-    try {
-        const userData = await User.update(req.body, {
-            individualHooks: true,
-            where: { id: req.params.id },
-        });
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const userData = await User.update(req.body, {
+//             individualHooks: true,
+//             where: { id: req.params.id },
+//         });
 
-        if (!userData[0]) {
-            res.status(404).json({ message: 'No user found' });
-            return;
-        }
+//         if (!userData[0]) {
+//             res.status(404).json({ message: 'No user found' });
+//             return;
+//         }
 
-        res.json(userData);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
+//         res.json(userData);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
 
-router.delete('/:id', async (req, res) => {
-    try {
-        const userData = await User.destroy({
-            where: { id: req.params.id },
-        });
+// router.delete('/:id', async (req, res) => {
+//     try {
+//         const userData = await User.destroy({
+//             where: { id: req.params.id },
+//         });
 
-        if (!userData) {
-            res.status(404).json({ message: 'No user found' });
-            return;
-        }
+//         if (!userData) {
+//             res.status(404).json({ message: 'No user found' });
+//             return;
+//         }
 
-        res.json(userData);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
+//         res.json(userData);
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
 
 module.exports = router;
