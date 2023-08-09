@@ -7,26 +7,39 @@
     <title>Tech Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    {{!-- no css file in this project, thanks bootstrap --}}
     {{!--
-    <link rel="stylesheet" href="/public/stylesheets/style.css"> --}}
+    <link rel="stylesheet" href="/public/css/style.css"> --}}
 </head>
 
 <body>
-    <div class="flex-column justify-space-around">
-        <header class="display-flex justify-space-between align-center p-2">
-            <a>Tech Blog</a>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/dashboard">Dashboard</a>
-                {{#if logged_in}}
-                <button id="logout" class="btn-no-style">Log out</button>
-                {{else}}
-                <a href="/login">Log in</a>
-                {{/if}}
-                <a href="/signup">Sign up</a>
-            </nav>
-        </header>
-    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">JC's Tech Blog</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                    {{#if logged_in}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout" id="logout">Log out</a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/signup">Sign up</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <main>
         {{{body}}}
@@ -34,6 +47,21 @@
     {{#if logged_in}}
     <script src="/js/logout.js"></script>
     {{/if}}
+    <footer class="footer mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mx-auto text-center">
+                    <p>
+                        Design by Jianxiong.
+                        <br>
+                        You can reach me out by sending an <a href="mailto:chenjianx567@126.com">Email</a>
+                        <br>
+                        Find more projects by checking my <a href="https://github.com/CQlove">Github</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

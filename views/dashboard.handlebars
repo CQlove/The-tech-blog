@@ -1,15 +1,44 @@
-<h2> Here is your posts:</h2>
-<div id="postadd">
-    <input type="text" placeholder="Input your post title here" id="title" required>
-    <input type="text" placeholder="Input text here" id="text" required>
-    <button type="button" class="btn btn-info" id="create-new">Create new Post</button>
+<div class="container m-5">
+    <h2> Add your new post here:</h2>
+    <div class="container mt-3">
+        <div id="postadd my3">
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Title:</span>
+                <input type="text" class="form-control" placeholder="Title of the post can not be empty"
+                    aria-describedby="inputGroup-sizing-lg" id="title">
+            </div>
+            <br>
+            <div class="input-group input-group-lg">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Text:</span>
+                <input type="text" class="form-control" placeholder="Text of the post can not be empty"
+                    aria-describedby="inputGroup-sizing-lg" id="text">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <button type="button" class="btn btn-info mx-auto col-3" id="create-new">Create new Post</button>
+        </div>
+    </div>
 </div>
-<div>
-    {{#if posts.length}}
-    {{!-- generated post under this user --}}
-    {{#each posts as |post| }}
-    {{>dashpost post}}
-    {{/each}}
+
+{{#if posts.length}}
+{{!-- generated post under this user --}}
+<div class="container m-5">
+    <h2 class="text-center">Your Posts:</h2>
+
+
+    <div class="container mt-3">
+        <div class="row border p-3 mb-3">
+            {{#each posts as |post| }}
+            <div class="col-sm-12 my-3">
+                {{> dashpost post}}
+
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
 
     {{/if}}
 </div>

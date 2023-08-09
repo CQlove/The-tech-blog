@@ -3,13 +3,13 @@ async function comment(event) {
 
     const comment = document.getElementById('input').value.trim();
     // we convert url to string and split by '/' and find last one which is id
-    const id = window.location.toString().split('/').length - 1;
-
+    const id = window.location.toString().split('/').pop();
+    console.log(comment)
 
     if (comment) {
         const response = await fetch('/api/comments', {
             method: 'POST',
-            body: JSON.stringify({ post_id, body: comment }),
+            body: JSON.stringify({ post_id: id, body: comment }),
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {

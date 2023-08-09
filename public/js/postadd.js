@@ -4,18 +4,23 @@ async function addNew(event) {
     const title = document.getElementById('title').value.trim();
     const text = document.getElementById('text').value.trim();
 
-    const response = await fetch(`/api/posts`, {
-        method: 'POST',
-        body: JSON.stringify({ title, text }),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
 
-    if (response.ok) {
-        document.location.reload();
+
+    if (title && text) {
+        const response = await fetch(`/api/posts`, {
+            method: 'POST',
+            body: JSON.stringify({ title, text }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.ok) {
+            document.location.reload();
+        } else {
+            alert("something went wrong");
+        }
     } else {
-        alert("something went wrong");
+        alert("You have to type both title and text before submit")
     }
 };
 

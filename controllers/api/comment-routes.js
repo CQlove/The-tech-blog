@@ -46,6 +46,7 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // ('/api/commnets/:id') with put method to update comment body
+// no function added yet
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.update(
@@ -71,6 +72,7 @@ router.put('/:id', withAuth, async (req, res) => {
 
 
 // ('/commnets/:id') with delete method to delete comment 
+// no function added yet
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const commentData = await Comment.destroy({

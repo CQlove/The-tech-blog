@@ -1,16 +1,28 @@
-<h2>Edit post:</h2>
-<div>
-    <div>
-        <p>Title:<input type="text" id="title" placeholder="{{post.title}}" required></p>
-    </div>
-    <div>
-        <p>text:<input type="text" id="text" placeholder="{{post.text}}" required></p>
-    </div>
-    <div>
-        <button type="button" id="update-button">Update Post</button>
-        <button type="button" id="delete-button">Delete Post</button>
+<div class="container m-5">
+    <h2> Edit your post here:</h2>
+    <div class="container mt-3">
+        <div id="postadd my3">
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Title:</span>
+                <input type="text" class="form-control" placeholder="{{post.title}}"
+                    aria-describedby="inputGroup-sizing-lg" id="title" value="{{post.title}}">
+            </div>
+            <br>
+            <div class="input-group input-group-lg">
+                <span class="input-group-text" id="inputGroup-sizing-lg">Text:</span>
+                <input type="text" class="form-control" placeholder="{{post.text}}"
+                    aria-describedby="inputGroup-sizing-lg" id="text" value="{{post.text}}">
+            </div>
+        </div>
+        <br>
+        <div class=" row">
+            <button type="button" class="btn btn-info mx-auto col-3" id="update-button">Update Post</button>
+            <button type="button" class="btn btn-info mx-auto col-3" id="delete-button">Delete Post</button>
+        </div>
     </div>
 </div>
+
 
 <script src="/js/postdelete.js"></script>
 <script src="/js/postedit.js"></script>

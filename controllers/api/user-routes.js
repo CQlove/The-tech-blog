@@ -1,55 +1,6 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../../models');
 
-// router.get('/', async (req, res) => {
-//     try {
-//         const userData = await User.findAll({
-//             attributes: { exclude: ['password'] },
-//         });
-//         res.json(userData);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const userData = await User.findOne({
-//             attributes: { exclude: ['password'] },
-//             where: { id: req.params.id },
-//             include: [
-//                 {
-//                     model: Post,
-//                     attributes: ['id', 'title', 'text', 'created_at'],
-//                 },
-//                 {
-//                     model: Comment,
-//                     attributes: ['id', 'body', 'created_at'],
-//                     include: {
-//                         model: Post,
-//                         attributes: ['title'],
-//                     },
-//                 },
-//                 {
-//                     model: Post,
-//                     attributes: ['title'],
-//                 },
-//             ],
-//         });
-
-//         if (!userData) {
-//             res.status(404).json({ message: 'No user found with this id' });
-//             return;
-//         }
-
-//         res.json(userData);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
-
 // user sign up
 router.post('/', async (req, res) => {
     try {
@@ -113,41 +64,44 @@ router.post('/logout', (req, res) => {
     }
 });
 
-// router.put('/:id', async (req, res) => {
-//     try {
-//         const userData = await User.update(req.body, {
-//             individualHooks: true,
-//             where: { id: req.params.id },
-//         });
 
-//         if (!userData[0]) {
-//             res.status(404).json({ message: 'No user found' });
-//             return;
-//         }
+// update user, function not added yet
+router.put('/:id', async (req, res) => {
+    try {
+        const userData = await User.update(req.body, {
+            individualHooks: true,
+            where: { id: req.params.id },
+        });
 
-//         res.json(userData);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
+        if (!userData[0]) {
+            res.status(404).json({ message: 'No user found' });
+            return;
+        }
 
-// router.delete('/:id', async (req, res) => {
-//     try {
-//         const userData = await User.destroy({
-//             where: { id: req.params.id },
-//         });
+        res.json(userData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
-//         if (!userData) {
-//             res.status(404).json({ message: 'No user found' });
-//             return;
-//         }
+// delete use and no function added for now
+router.delete('/:id', async (req, res) => {
+    try {
+        const userData = await User.destroy({
+            where: { id: req.params.id },
+        });
 
-//         res.json(userData);
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
+        if (!userData) {
+            res.status(404).json({ message: 'No user found' });
+            return;
+        }
+
+        res.json(userData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
