@@ -3,7 +3,7 @@ const { Post } = require('../models');
 const postData = [
     {
         title: "Guess my job",
-        text: "My job needs to work at anytime when citizen need me",
+        text: "My job needs to work at anytime when citizens need me",
         user_id: 1
     },
     {
